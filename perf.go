@@ -1,78 +1,78 @@
 package zerobitperf
 
 func nzerobit_1(key []byte) int {
-	var count int
+	var n int
 	for _, b := range key {
 		for i := 0; i < 8; i++ {
 			if b&(1<<i) == 0 {
-				count++
+				n++
 			} else {
-				return count
+				return n
 			}
 		}
 	}
-	return count
+	return n
 }
 
 func nzerobit_2(key []byte) int {
-	var count int
+	var n int
 	for _, b := range key {
 		for i := 0; i < 8; i++ {
 			if (b>>i)&1 == 0 {
-				count++
+				n++
 			} else {
-				return count
+				return n
 			}
 		}
 	}
-	return count
+	return n
 }
 
 func nzerobit_3(key []byte) int {
-	var count int
+	var n int
 	for _, b := range key {
 		if (b>>0)&1 == 0 {
-			count++
+			n++
 		} else {
-			return count
+			return n
 		}
 		if (b>>1)&1 == 0 {
-			count++
+			n++
 		} else {
-			return count
+			return n
 		}
 		if (b>>2)&1 == 0 {
-			count++
+			n++
 		} else {
-			return count
+			return n
 		}
 		if (b>>3)&1 == 0 {
-			count++
+			n++
 		} else {
-			return count
+			return n
 		}
 		if (b>>4)&1 == 0 {
-			count++
+			n++
 		} else {
-			return count
+			return n
 		}
 		if (b>>5)&1 == 0 {
-			count++
+			n++
 		} else {
-			return count
+			return n
 		}
 		if (b>>6)&1 == 0 {
-			count++
+			n++
 		} else {
-			return count
+			return n
 		}
 		if (b>>7)&1 == 0 {
-			count++
+			n++
 		} else {
-			return count
+			return n
 		}
 	}
-	return count
+	return n
 }
 
 var zeros = [256]int{
@@ -95,14 +95,14 @@ var zeros = [256]int{
 }
 
 func nzerobit_4(key []byte) int {
-	var count int
+	var n int
 	for _, b := range key {
-		count += zeros[b]
+		n += zeros[b]
 		if b != 0 {
-			return count
+			return n
 		}
 	}
-	return count
+	return n
 }
 
 var debruijn64 = [64]byte{
